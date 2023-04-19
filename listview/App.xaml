@@ -1,0 +1,13 @@
+﻿<Application x:Class="listview.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--<Style TargetType="GridViewColumnHeader">
+             <Setter Property="FontStyle" Value="Oblique"></Setter>
+         </Style> -->
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </Application.Resources>
+</Application>

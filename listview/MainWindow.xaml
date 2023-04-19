@@ -1,0 +1,77 @@
+﻿<Window x:Class="listview.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="500">
+    <Grid>
+        <TabControl x:Name="TabControl">
+            <TabItem Header="Form">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Height="60">
+                        <Label>Wybierz program którego używasz</Label>
+                        <ComboBox Height="40" FontSize="15" Name="Odtwarzacz">
+                            <ComboBoxItem IsSelected="True" x:Name="discord">Discord</ComboBoxItem>
+                            <ComboBoxItem x:Name="ts">TeamSpeak</ComboBoxItem>
+                            <ComboBoxItem x:Name="skype">Skype</ComboBoxItem>
+                        </ComboBox> 
+                    </StackPanel>
+         
+                    <Label Grid.Row="1" FontSize="20" VerticalAlignment="Center">Name:</Label>
+                    <TextBox Grid.Row="1" Width="300" Name="TextBoxName" Height="20" />
+
+                    <Label Grid.Row="2" FontSize="20" VerticalAlignment="Center">Number:</Label>
+                    <TextBox Grid.Row="2" Width="300" Name="TextBoxNumber" Height="20" />
+
+                    <Label Grid.Row="3" FontSize="20" VerticalAlignment="Center">Mail:</Label>
+                    <TextBox Grid.Row="3" Width="300" Name="TextBoxMail" Height="20" />
+                    
+
+                    <Button Grid.Row="4" Width="400" Height="50" FontSize="20" Name="NewContact"
+                            Click="NewContact_OnClick">
+                        Create Contact
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Contact">
+                <ListView Margin="10" Name="lvUsers">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                            <GridViewColumn Header="Number" Width="100" DisplayMemberBinding="{Binding Number}" />
+                            <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete User" Click="MenuItem_OnClick" />
+                            <MenuItem Header="Edit User" Click="Edit_OnClick" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Refresher">
+                <Grid>
+                    <Button Name="refresh" Click="Refresh_OnClick">Odswiez</Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
